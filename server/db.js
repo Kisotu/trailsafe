@@ -7,7 +7,7 @@ const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@tra
 
 const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 
-async function run() {
+async function connectDB() {
   try {
     await mongoose.connect(uri, clientOptions);
     await mongoose.connection.db.admin().command({ ping: 1 });
@@ -16,4 +16,6 @@ async function run() {
     await mongoose.disconnect();
   }
 }
-run().catch(console.dir);
+connectDB().catch(console.dir);
+
+export default connectDB;
