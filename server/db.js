@@ -1,21 +1,24 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 
 dotenv.config();
 
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@trailsafe.mytqb.mongodb.net/?retryWrites=true&w=majority&appName=trailsafe`;
+const uri = process.env.MONGODB_URI;
 
-const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+const clientOptions = {
+  serverApi: { version: "1", strict: true, deprecationErrors: true },
+};
 
 async function connectDB() {
   try {
     await mongoose.connect(uri, clientOptions);
-    await mongoose.connection.db.admin().command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    console.log("Successfully connected to MongoDB!");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
   } finally {
     await mongoose.disconnect();
   }
 }
-connectDB().catch(console.dir);
+connectDB();
 
 export default connectDB;
