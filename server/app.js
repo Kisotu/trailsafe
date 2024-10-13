@@ -17,5 +17,5 @@ app.use(express.urlencoded({ extended: true })); // parses URL-encoded data
 
 
 //routes
-app.use('/user', userRouter);
+app.use('/users', userRouter);
 export default app;
