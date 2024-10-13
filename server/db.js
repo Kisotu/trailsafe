@@ -15,8 +15,6 @@ async function connectDB() {
     console.log("Successfully connected to MongoDB!");
   } catch (err) {
     console.error("MongoDB connection error:", err);
-  } finally {
-    await mongoose.disconnect();
   }
 }
 connectDB();
