@@ -9,8 +9,8 @@
 }
 
 .mapboxgl-popup-close-button {
-  font-size: 20px;
+  font-size: 28px;
   color: #333;
-  right: 8px;
-  top: 8px;
+  right: 4px;
+  top: 4px;
 }
