@@ -15,8 +15,7 @@ const PinSchema = new Schema({
     default: '#000000'
   },
   addedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    type: String,
     required: true
   },
   location: {
@@ -30,16 +29,27 @@ const PinSchema = new Schema({
       required: true
     }
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+  difficulty: {
+    type: String,
+    required: true,
+    enum: ['Easy', 'Moderate', 'Difficult']
+  },
+  length: {
+    type: Number,
+    required: true,
+    min: 0
+  },
+  time: {
+    type: Number,
+    required: true,
+    min: 0
+  },
 }, {
   timestamps: true
 });
 
 PinSchema.index({ location: '2dsphere' });
 
-const Pin = mongoose.model('Pin',PinSchema)
+const Pin = mongoose.model('Pin', PinSchema);
 
-export { Pin }
+export { Pin };
