@@ -7,9 +7,9 @@ export default defineConfig({
   css: {
     postcss: './postcss.config.js',
   },
-  // server: {
-  //   proxy: {
-  //     '/api': 'http://localhost:8080'
-  //   }
-  // }
+  server: {
+    proxy: {
+      '/signin': 'http://localhost:3000'
+    }
+  }
 })
